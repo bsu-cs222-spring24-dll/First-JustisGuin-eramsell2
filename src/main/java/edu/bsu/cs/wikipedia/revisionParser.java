@@ -5,8 +5,6 @@ import net.minidev.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
-
 public class revisionParser {
     public JSONArray parse(InputStream testInputStream) throws IOException {
         JSONArray names = (JSONArray) JsonPath.read(testInputStream, "$..revisions..user");
