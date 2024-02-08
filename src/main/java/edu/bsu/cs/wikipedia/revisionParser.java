@@ -3,38 +3,24 @@ package edu.bsu.cs.wikipedia;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 public class revisionParser {
-    String JSONString;
-    public revisionParser(String JSONString, String s) {
+    public JSONArray parse(InputStream testInputStream) throws IOException {
+        JSONArray names = (JSONArray) JsonPath.read(testInputStream, "$..revisions..user");
 
-        this.JSONString = JSONString;
+        return names;
+
+    }
+    public JSONArray parseTimestamps(InputStream testInputStream) throws IOException{
+        JSONArray timestamps = (JSONArray) JsonPath.read(testInputStream, "$..revisions..timestamp");
+        return timestamps;
     }
 
 
-        public ArrayList<revisionParser> createRevisionList() {
-            JSONArray JSONRevisions = JsonPath.read(this.JSONString, "$..revisions");
-            ArrayList<revisionParser> revisionArrayList = new ArrayList<>();
-            ArrayList<String> timestamps = createTimeStampList();
-            ArrayList<String> usernames = createUserList();
-
-
-            for (int arrayIndex = 0; arrayIndex < JSONRevisions.size(); arrayIndex++) {
-                revisionArrayList.add(new revisionParser(timestamps.get(arrayIndex), usernames.get(arrayIndex)));
-            }
-            return revisionArrayList;
-        }
 
 
 
-
-
-    public ArrayList<String> createTimeStampList()
-    {
-        return JsonPath.read(this.JSONString,"$..revisions.timestamp");
-    }
-    public ArrayList<String> createUserList()
-    {
-        return JsonPath.read(this.JSONString,"$..revisions.user");
-}}
+}
