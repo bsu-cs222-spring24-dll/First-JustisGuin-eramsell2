@@ -14,7 +14,7 @@ class WikiArticleInputNameTest {
         void testCheckArticleIsValidWithEmptyData() {
             WikiArticleInputName wikiArticleInputName = new WikiArticleInputName();
             String jsonRevisionData = "{}";
-            assertThrows(RuntimeException.class, () -> wikiArticleInputName.articleNameisEmpty(jsonRevisionData));
+            assertThrows(RuntimeException.class, () -> wikiArticleInputName.isarticleNameEmpty(jsonRevisionData));
         }
         @Test
         void testCheckArticleIsValidWithValidData() {

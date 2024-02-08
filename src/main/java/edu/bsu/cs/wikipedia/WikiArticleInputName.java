@@ -14,7 +14,7 @@ public class WikiArticleInputName {
     }
 
 
-    public void articleNameisEmpty(String jsonRevisionData){
+    public void isarticleNameEmpty(String jsonRevisionData){
         if (Objects.equals(articleName(), "")) {
             System.err.println("This Article is Empty");
             System.exit(0);
