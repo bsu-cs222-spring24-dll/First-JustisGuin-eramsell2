@@ -11,7 +11,9 @@ import java.io.InputStream;
 public class revisionParserTest {
     @Test
     public void testNameParse() throws IOException{
-        arrayCreator nameTest = new arrayCreator(jsonStringFrom);
+        arrayCreator nameTest = new arrayCreator(jsonStringFrom());
+        JSONArray testArray = nameTest.createJSONArray("$..revisions..timestamp");
+        Assertions.assertEquals(14, testArray.size());
 
     }
 
