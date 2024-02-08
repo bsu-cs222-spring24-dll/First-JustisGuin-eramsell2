@@ -1,14 +1,6 @@
 package edu.bsu.cs.wikipedia;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Scanner;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 class WikiArticleInputNameTest {
         @Test
         void testCheckArticleIsValidWithEmptyData() {
