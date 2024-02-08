@@ -22,7 +22,7 @@ public class ReadJsonFromFileTest {
     public void testCountRevisionsWithJsonPath() throws IOException {
         String jsonData = readSampleFileAsString();
         JSONArray revisions = getRevisionsFromJson(jsonData);
-        Assertions.assertEquals(4, revisions.size());
+        Assertions.assertEquals(14, revisions.size());
     }
 
     private String readSampleFileAsString() throws NullPointerException, IOException {
