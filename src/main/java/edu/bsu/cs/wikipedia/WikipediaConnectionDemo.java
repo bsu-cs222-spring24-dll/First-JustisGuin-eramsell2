@@ -20,8 +20,7 @@ public class WikipediaConnectionDemo {
                 "&rvprop=timestamp|user&rvlimit=14&redirects";
         URL url = new URL(encodedUrlString);
         URLConnection connection = url.openConnection();
-        connection.setRequestProperty("User-Agent",
-                "CS222FirstProject/0.1 (dllargent@bsu.edu)");
+        connection.setRequestProperty("User-Agent", "CS222FirstProject/0.1 (justis.guin@bsu.edu)");
         connection.connect();
         return connection;
     }
