@@ -1,10 +1,12 @@
 package edu.bsu.cs.wikipedia;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.Scanner;
 
 public class WikipediaConnectionDemo {
 
@@ -32,5 +34,10 @@ public class WikipediaConnectionDemo {
     private static void printRawJson(String jsonData) {
         System.out.println(jsonData);
     }
+
+
+
+
+
 
 }
