@@ -6,7 +6,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
 
-public class WikipediaConnectionDemo {
+public class connectToWiki {
 
     public static void main(String[] args) throws IOException {
         URLConnection connection = connectToWikipedia("zappa");

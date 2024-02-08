@@ -9,7 +9,7 @@ public class convertToStringTest {
     convertToString test = new convertToString();
     @Test
     public void TestIfJSONToStringOutputs() throws IOException {
-        String jsonString = test.jsonStringFrom(new WikipediaConnectionDemo().connectToWikipedia("zappa"));
+        String jsonString = test.jsonStringFrom(new connectToWiki().connectToWikipedia("zappa"));
         Assertions.assertFalse(jsonString.isEmpty());
     }
 }
