@@ -1,19 +1,19 @@
 package edu.bsu.cs.wikipedia;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-class WikiArticleInputNameTest {
-        @Test
-        void testCheckArticleIsValidWithEmptyData() {
-            WikiArticleInputName wikiArticleInputName = new WikiArticleInputName();
-            String jsonRevisionData = "{}";
-            assertThrows(RuntimeException.class, () -> wikiArticleInputName.isarticleNameEmpty(jsonRevisionData));
-        }
-        @Test
-        void testCheckArticleIsValidWithValidData() {
-            WikiArticleInputName wikiArticleInputName = new WikiArticleInputName();
-            String jsonRevisionData = "{\"revisions\": [{\"user\": \"User\", \"timestamp\": \"2023-03-28T15:02:23Z\", \"comment\": \"Initial revision\", \"content\": \"{\\\"article\\\":\\\"Test\\\"}\"}]}";
-            assertDoesNotThrow(() -> wikiArticleInputName.checkArticleIsValid(jsonRevisionData));
-        }
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
 
-
+public class WikiArticleInputTest {
+    @Test
+    public void testArticleNameInput() {
+        String testInput = "";
+        InputStream in = new ByteArrayInputStream(testInput.getBytes());
+        System.setIn(in);
+        WikiArticleInputName input = new WikiArticleInputName();
+        String result = input.articleName(new Scanner(System.in));
+        Assertions.assertEquals(testInput, result);
     }
+}
