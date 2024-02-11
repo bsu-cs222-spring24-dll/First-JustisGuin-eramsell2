@@ -5,21 +5,28 @@ import net.minidev.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.util.Objects;
+
 public class revisionParser {
-    public JSONArray parse(InputStream testInputStream) throws IOException {
+    public String parse(InputStream testInputStream) throws IOException {
         JSONArray names = (JSONArray) JsonPath.read(testInputStream, "$..revisions..user");
 
-        return names;
+        return names.get(0).toString();
 
     }
-    public JSONArray parseTimestamps(InputStream testInputStream) throws IOException{
+    public String parseTimestamps(InputStream testInputStream) throws IOException{
         JSONArray timestamps = (JSONArray) JsonPath.read(testInputStream, "$..revisions..timestamp");
-        return timestamps;
+        return timestamps.get(0).toString();
+
     }
-    public JSONArray parseRedirects(InputStream testInputStream) throws IOException{
+    public String parseRedirects(InputStream testInputStream) throws IOException{
         JSONArray redirects = (JSONArray) JsonPath.read(testInputStream, "$..redirects..to");
-        return redirects;
+        return redirects.get(0).toString();
+
     }
+
+
 
 
 

@@ -1,6 +1,7 @@
 package edu.bsu.cs.wikipedia;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -25,8 +26,15 @@ public class connectToWiki {
         URL url = new URL(encodedUrlString);
         URLConnection connection = url.openConnection();
         connection.setRequestProperty("User-Agent", "CS222FirstProject/0.1 (justis.guin@bsu.edu)");
+        InputStream inputStream = connection.getInputStream();
+        revisionParser parser = new revisionParser();
+        String names = parser.parse(inputStream);
+        String timestamps = parser.parseTimestamps(inputStream);
+        String redirects = parser.parseRedirects(inputStream);
         connection.connect();
         return connection;
+
+
     }
 
 
