@@ -16,6 +16,10 @@ public class revisionParser {
         JSONArray timestamps = (JSONArray) JsonPath.read(testInputStream, "$..revisions..timestamp");
         return timestamps;
     }
+    public JSONArray parseRedirects(InputStream testInputStream) throws IOException{
+        JSONArray redirects = (JSONArray) JsonPath.read(testInputStream, "$..redirects..to");
+        return redirects;
+    }
 
 
 
