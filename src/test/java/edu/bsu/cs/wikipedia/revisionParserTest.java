@@ -24,7 +24,7 @@ public class revisionParserTest {
     public void testTimestamps() throws IOException{
         revisionParser parser = new revisionParser();
         InputStream testDataStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("test.json");
-        String timestamps = String.valueOf(parser.parseTimestamps(String.valueOf(testDataStream)));
+        String timestamps = parser.parseTimestamps(String.valueOf(testDataStream));
         Assertions.assertEquals("2024-02-04T18:19:33Z", timestamps);
     }
     @Test

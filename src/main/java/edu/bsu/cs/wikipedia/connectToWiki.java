@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.rmi.RemoteException;
 import java.util.Scanner;
@@ -17,15 +18,17 @@ public class connectToWiki {
     public static void main(String[] args) throws IOException {
         try {
             WikiArticleInputName input = new WikiArticleInputName();
+            errorCatcher error = new errorCatcher();
             URLConnection connection = connectToWikipedia(input);
             String jsonData = getJsonData(connection);
+            error.noWikiArticlePage(jsonData);
             printRawJson(jsonData);
             revisionParser parser = new revisionParser();
             parser.parse(jsonData);
             parser.parseTimestamps(jsonData);
             parser.parseRedirects(jsonData);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (UnknownHostException e) {
+            System.err.println("NO CONNECTION DETECTED");
         }
     }
 

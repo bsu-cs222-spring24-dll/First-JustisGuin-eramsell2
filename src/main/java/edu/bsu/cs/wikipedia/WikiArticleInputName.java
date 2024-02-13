@@ -12,7 +12,13 @@ public class WikiArticleInputName {
 //on naive String searches to extract what data you need.
     public String articleName(Scanner scanner) {
         System.out.println("Enter a Wiki Article Name:");
-        return scanner.nextLine();
+
+        String input = scanner.nextLine();
+        if (input.isEmpty()){
+            System.err.println("No page entered");
+        }
+        return input;
+
     }
 
 
