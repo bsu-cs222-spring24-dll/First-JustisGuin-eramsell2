@@ -1,7 +1,5 @@
 package edu.bsu.cs.wikipedia;
 
-import com.jayway.jsonpath.JsonPath;
-import net.minidev.json.JSONArray;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +8,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.nio.charset.Charset;
-import java.rmi.RemoteException;
+
 import java.util.Scanner;
 
 public class connectToWiki {
