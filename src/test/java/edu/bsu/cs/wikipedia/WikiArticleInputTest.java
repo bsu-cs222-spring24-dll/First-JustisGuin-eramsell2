@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class WikiArticleInputTest {
     @Test
     public void testArticleNameInput() {
-        String testInput = "";
+        String testInput = "Ocean";
         InputStream in = new ByteArrayInputStream(testInput.getBytes());
         System.setIn(in);
         WikiArticleInputName input = new WikiArticleInputName();
