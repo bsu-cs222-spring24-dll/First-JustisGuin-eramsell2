@@ -7,4 +7,5 @@ The program first asks the user to input the name of a Wikipedia article. Next, 
 The edit history is parsed to JSON data and then a list of the timestamps and usernames of the last 14 revisions are printed.
 
 Build: Gradle
+
 Language: Java
