@@ -30,7 +30,7 @@ public class revisionParser {
             JSONArray toArray = (JSONArray) JsonPath.read(jsonData, "$..redirects.to");
             String redirectTo = "";
             if (!toArray.isEmpty()) {
-                redirectTo = (String) toArray.getFirst();
+                redirectTo = (String) toArray.get(0);
             }
             System.out.println("Redirected to: " + redirectTo);
         } else {
