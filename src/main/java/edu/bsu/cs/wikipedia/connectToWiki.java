@@ -1,5 +1,6 @@
 package edu.bsu.cs.wikipedia;
 
+import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 
 import java.io.IOException;
@@ -17,13 +18,16 @@ public class connectToWiki {
         try {
             WikiArticleInputName input = new WikiArticleInputName();
             URLConnection connection = connectToWikipedia(input);
-            String jsonData = readJsonAsStringFrom(connection);
+            String jsonData = getJsonData(connection);
             printRawJson(jsonData);
-        }catch (IOException e){
+            revisionParser parser = new revisionParser();
+            parser.parse(jsonData);
+            parser.parseTimestamps(jsonData);
+            parser.parseRedirects(jsonData);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 
     public static URLConnection connectToWikipedia(WikiArticleInputName input) throws IOException {
         String searchTerm = input.articleName(new Scanner(System.in));
@@ -32,25 +36,24 @@ public class connectToWiki {
                 "&rvprop=timestamp|user&rvlimit=14&redirects";
         URL url = new URL(encodedUrlString);
         URLConnection connection = url.openConnection();
-        connection.setRequestProperty("User-Agent", "CS222FirstProject/0.1 (justis.guin@bsu.edu)");
+        connection.setRequestProperty("User-Agent", "Project1-Justis-Ethan (justis.guin@bsu.edu)");
         connection.connect();
         return connection;
 
-
     }
 
-
-    private static String readJsonAsStringFrom(URLConnection connection) throws IOException {
-        return new String(connection.getInputStream().readAllBytes(), Charset.defaultCharset());
+    private static String getJsonData(URLConnection connection) throws IOException {
+        InputStream inputStream = connection.getInputStream();
+        StringBuilder jsonData = new StringBuilder();
+        Scanner scanner = new Scanner(inputStream, "UTF-8");
+        while (scanner.hasNext()) {
+            jsonData.append(scanner.nextLine());
+        }
+        scanner.close();
+        return jsonData.toString();
     }
 
     private static void printRawJson(String jsonData) {
         System.out.println(jsonData);
     }
-
-
-
-
-
-
 }
