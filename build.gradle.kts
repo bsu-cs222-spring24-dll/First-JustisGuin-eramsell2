@@ -11,12 +11,16 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.slf4j:slf4j-nop:2.0.11")
+    //jsonpath
     implementation("com.jayway.jsonpath:json-path:2.9.0")
+    //json
     implementation("net.minidev:json-smart:2.5.0")
-    implementation("com.jayway.jsonpath:json-path:2.4.0")
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    testImplementation("org.slf4j:slf4j-simple:2.0.12")
+
 }
 
 tasks.test {
