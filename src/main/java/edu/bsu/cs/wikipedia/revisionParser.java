@@ -3,6 +3,9 @@ package edu.bsu.cs.wikipedia;
 import com.jayway.jsonpath.JsonPath;
 import net.minidev.json.JSONArray;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLConnection;
+import java.util.Scanner;
 
 public class revisionParser {
 
@@ -40,7 +43,23 @@ public class revisionParser {
         return jsonData;
     }
 
+    public static String getJsonData(URLConnection connection) throws IOException {
+        InputStream inputStream = connection.getInputStream();
+        StringBuilder jsonData = new StringBuilder();
+        Scanner scanner = new Scanner(inputStream, "UTF-8");
+        while(scanner.hasNext()){
+            jsonData.append(scanner.nextLine());
+        }
+        scanner.close();
+        return jsonData.toString();
+
+
+    }
+    public static void printRawJson(String jsonData){
+        System.out.println(jsonData);
+    }
 }
+
 
 
 
