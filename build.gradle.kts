@@ -1,7 +1,6 @@
 plugins {
-    id ("java")
-    id ("application")
-    id ("org.openjfx.javafxplugin") version "0.1.0"
+    id("java")
+    id("application")
 }
 
 group = "edu.bsu.cs.wikipedia"
@@ -14,21 +13,22 @@ repositories {
 dependencies {
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("org.slf4j:slf4j-nop:2.0.11")
+    //jsonpath
     implementation("com.jayway.jsonpath:json-path:2.9.0")
+    //json
     implementation("net.minidev:json-smart:2.5.0")
-    implementation ("org.openjfx:javafx:11")
+
+
+    testImplementation("org.slf4j:slf4j-simple:2.0.12")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
+    implementation("org.json:json:20210307")
 
 }
 
 tasks.test {
     useJUnitPlatform()
 }
-javafx {
-    version = "17"
-    modules ("javafx.controls", "javafx.fxml")
-}
 
 application {
-    mainClass.set("edu.bsu.cs.wikipedia.GUI.java")
+    mainClass.set("edu.bsu.cs.wikipedia.WikipediaConnectionDemo")
 }
