@@ -30,5 +30,5 @@ javafx {
 }
 
 application {
-    mainClass.set("edu.bsu.cs.wikipedia.GUI.java")
+    mainClass.set("edu.bsu.cs.wikipedia.GUI")
 }

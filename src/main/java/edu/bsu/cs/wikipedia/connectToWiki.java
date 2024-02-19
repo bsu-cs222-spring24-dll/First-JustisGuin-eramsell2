@@ -21,4 +21,5 @@ public class connectToWiki {
         return connection;
     }
 
+
 }
