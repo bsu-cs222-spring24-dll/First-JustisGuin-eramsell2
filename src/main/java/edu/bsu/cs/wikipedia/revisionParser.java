@@ -55,8 +55,9 @@ public class revisionParser {
 
 
     }
-    public static void printRawJson(String jsonData){
+    public static String printRawJson(String jsonData){
         System.out.println(jsonData);
+        return jsonData;
     }
 }
 
