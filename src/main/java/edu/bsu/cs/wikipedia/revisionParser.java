@@ -5,13 +5,15 @@ import net.minidev.json.JSONArray;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class revisionParser {
 
     public String parse(String jsonData) throws IOException {
         JSONArray names = (JSONArray) JsonPath.read(jsonData, "$..revisions..user");
-        System.out.println(" User Revisions:");
+        //System.out.println(" User Revisions:");
         for (int i = 0; i < 14; i++) {
             System.out.println((i + 1) + ". " + names.get(i).toString());
         }
@@ -52,27 +54,38 @@ public class revisionParser {
         scanner.close();
         return jsonData.toString();
     }
-    public static void printRawJson(String jsonData) {
-        System.out.println(jsonData);
+
+    public List<String> dateUserList(String jsonData) throws IOException {
+
+        JSONArray names = (JSONArray) JsonPath.read(jsonData, "$..revisions[*].user");
+
+        JSONArray timestamps = (JSONArray) JsonPath.read(jsonData, "$..revisions[*].timestamp");
+
+
+        List<String> revisionList = new ArrayList<>();
+
+        for (int i = 0; i < 14 && i < names.size() && i < timestamps.size(); i++) {
+
+            String dateTime = String.format("%-19s %s%n", timestamps.get(i), names.get(i));
+
+            revisionList.add(dateTime);
+
+        }
+
+        return revisionList;
+
+    }
+
+    public void printFormattedList(List<String> revisionList) {
+
+        System.out.println("\nDate/Time:             User:");
+
+        revisionList.forEach(System.out::println);
+
     }
     
 
-    public static String getJsonData(URLConnection connection) throws IOException {
-        InputStream inputStream = connection.getInputStream();
-        StringBuilder jsonData = new StringBuilder();
-        Scanner scanner = new Scanner(inputStream, "UTF-8");
-        while(scanner.hasNext()){
-            jsonData.append(scanner.nextLine());
-        }
-        scanner.close();
-        return jsonData.toString();
 
-
-    }
-    public static String printRawJson(String jsonData){
-        System.out.println(jsonData);
-        return jsonData;
-    }
 }
 
 

@@ -3,9 +3,10 @@ package edu.bsu.cs.wikipedia;
 import java.io.IOException;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
+import java.util.Collections;
 
 import static edu.bsu.cs.wikipedia.revisionParser.getJsonData;
-import static edu.bsu.cs.wikipedia.revisionParser.printRawJson;
+//import static edu.bsu.cs.wikipedia.revisionParser.printRawJson;
 
 
 public class Main {
@@ -17,11 +18,8 @@ public class Main {
             connection = connectToWiki.connectToWikipedia(input);
             String jsonData = getJsonData(connection);
             error.noWikiArticlePage(jsonData);
-            printRawJson(jsonData);
             revisionParser parser = new revisionParser();
-            parser.parse(jsonData);
-            parser.parseTimestamps(jsonData);
-            parser.parseRedirects(jsonData);
+            parser.printFormattedList(parser.dateUserList(jsonData));
         } catch (UnknownHostException e) {
             System.err.println("NO CONNECTION DETECTED");
         }
