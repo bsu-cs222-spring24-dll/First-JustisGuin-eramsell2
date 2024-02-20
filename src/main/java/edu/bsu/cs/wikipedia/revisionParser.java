@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class revisionParser {
 
-    public String parse(String jsonData) throws IOException {
+    public static String parse(String jsonData) throws IOException {
         JSONArray names = (JSONArray) JsonPath.read(jsonData, "$..revisions..user");
-        //System.out.println(" User Revisions:");
+        System.out.println(" User Revisions:");
         for (int i = 0; i < 14; i++) {
             System.out.println((i + 1) + ". " + names.get(i).toString());
         }
@@ -76,7 +76,7 @@ public class revisionParser {
 
     }
 
-    public void printFormattedList(List<String> revisionList) {
+    public static void printFormattedList(List<String> revisionList) {
 
         System.out.println("\nDate/Time:             User:");
 

@@ -10,8 +10,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URLConnection;
 
 public class GUI extends Application {
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -22,16 +24,19 @@ public class GUI extends Application {
     @Override
     public void start(Stage primaryStage){
         outputField.setEditable(false);
+        outputField.setPrefHeight(200);
         configure(primaryStage);
+        primaryStage.show();
         configureSearchButton();
     }
 
     private void configure(Stage stage) {
-        stage.setTitle("Wiki Search");
-        stage.setScene(new Scene(createRoot()));
-        stage.sizeToScene();
+        Scene scene = new Scene(createRoot(),250,200);
+        stage.setTitle("Wikipedia Page Revision List");
+        stage.setScene(scene);
         stage.show();
     }
+
     private Pane createRoot() {
         VBox root = new VBox();
         root.getChildren().addAll(
@@ -53,12 +58,19 @@ public class GUI extends Application {
 
 
     }
+
     private void searchWiki(String input) throws IOException {
         revisionParser run = new revisionParser();
-        String output = String.valueOf(run.dateUserList(input));
+        String output = run.parse(input);
 
 
         outputField.setText(output);
     }
+
+
+
+
+
+
 
 }

@@ -1,14 +1,10 @@
 package edu.bsu.cs.wikipedia;
 
-import com.jayway.jsonpath.JsonPath;
-import net.minidev.json.JSONArray;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.util.Objects;
 
 public class revisionParserTest {
     @Test

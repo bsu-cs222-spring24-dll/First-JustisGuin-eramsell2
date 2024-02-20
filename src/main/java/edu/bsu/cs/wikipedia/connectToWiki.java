@@ -20,6 +20,9 @@ public class connectToWiki {
         connection.connect();
         return connection;
     }
+    public static String readJsonAsStringFrom(URLConnection connection) throws IOException {
+        return new String(connection.getInputStream().readAllBytes(), Charset.defaultCharset());
+    }
 
 
 }

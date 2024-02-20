@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class WikiArticleInputName {
 
-    public String articleName(Scanner scanner) {
+    public static String articleName(Scanner scanner) {
         System.out.println("Enter a Wiki Article Name:");
 
         String input = scanner.nextLine();
