@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("application")
+    id ("org.openjfx.javafxplugin") version "0.1.0"
 }
 
 group = "edu.bsu.cs.wikipedia"
@@ -22,11 +23,16 @@ dependencies {
     testImplementation("org.slf4j:slf4j-simple:2.0.12")
     implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation("org.json:json:20210307")
+    implementation("org.openjfx:javafx:11")
 
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+javafx {
+    version = "17"
+    modules ("javafx.controls", "javafx.fxml")
 }
 
 application {

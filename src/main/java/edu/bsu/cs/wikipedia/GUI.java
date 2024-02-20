@@ -55,7 +55,7 @@ public class GUI extends Application {
     }
     private void searchWiki(String input) throws IOException {
         revisionParser run = new revisionParser();
-        String output = run.printRawJson(input);
+        String output = String.valueOf(run.dateUserList(input));
 
 
         outputField.setText(output);
